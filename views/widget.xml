@@ -1,0 +1,3 @@
+<Alloy>
+	<Label id="outer"><Label id="inner" platform="android,mobileweb" /></Label>
+</Alloy>
