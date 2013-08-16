@@ -1,13 +1,13 @@
 {
 	"id": "nl.fokkezb.label",
 	"name": "nl.fokkezb.label",
-	"description" : "Replacement for Ti.UI.Label with Android compatible text-shadow and who knows what.",
+	"description" : "Provides a replacement for <Label /> to support text shadows on Android & BlackBerry.",
 	"author": "Fokke Zandbergen",
 	"version": "1.0",
 	"copyright":"Copyright (c) 2013",
 	"license":"Apache License, Version 2.0",
 	"min-alloy-version": "1.0",
 	"min-titanium-version":"3.0",
-	"tags":"label,style",
-	"platforms":"android,ios"
+	"tags":"label,shadow",
+	"platforms":"android,ios,blackberry,mobileweb"
 }

@@ -1,75 +1,68 @@
-var args = arguments[0] || {};
+var args = arguments[0] || {},
+    props = ['font', 'text', 'ellipsize', 'html', 'textAlign', 'verticalAlign', 'textId', 'wordWrap', 'color', 'autoLink'];
 
-if (OS_ANDROID) {
-	
-	exports.applyProperties = function (properties) {
-		properties = _.omit(properties, 'id', '__parentSymbol', '__itemTemplate', '$model');
-		
-		if (properties.textid) { // https://jira.appcelerator.org/browse/TC-2363
-			properties.text = L(properties.textid);
-			delete properties.textid;
-		}
-		
-		if (properties.shadowColor) {
-		    var shadowColor = properties.shadowColor,
-		    	shadowOffset = _.defaults(properties.shadowOffset || {}, {
-		        x: 0,
-		        y: -1
-		  	});
-		  	
-		    delete properties.shadowOffset;
-		    delete properties.shadowColor;
-		    
-		    $.outer.applyProperties(_.extend({}, properties, {
-		    	color: shadowColor
-		    }));
-		    
-		    $.inner.applyProperties(_.extend({}, properties, {
-		    	top: -shadowOffset.y,
-		    	left: -shadowOffset.x
-		    }));
-		    
-		} else {
-			$.outer.remove($.inner);
-			$.inner = null;
-			
-			$.outer.applyProperties(properties);
-		}
-	    
-	    return;
-	};
-	
-	exports.setText = function (text) {
-		$.outer.text = text;
-		$.inner.text = text;
-	};
-	
-	exports.getText = $.inner.getText;
-	
-	exports.animate = function (_args, _callback) {
-		$.outer.animate(_args);
-		$.inner.animate(_args, _callback);
-	};
-	
-} else {
-	exports.applyProperties = function (properties) {
-		properties = _.omit(properties, 'id', '__parentSymbol', '__itemTemplate', '$model');
-		
-		if (properties.textid) { // https://jira.appcelerator.org/browse/TC-2363
-			properties.text = L(properties.textid);
-			delete properties.textid;
-		}
-		
-		$.outer.applyProperties(properties);
-		
-		return;
-	};
-	
-	exports.setText = $.outer.setText;
-	exports.getText = $.outer.getText;
-	
-	exports.animate = $.outer.animate;
+applyProperties(args);
+
+function applyProperties(properties) {
+    properties = _.omit(properties, 'id', '__parentSymbol', '__itemTemplate', '$model');
+
+    if (properties.textid) { // https://jira.appcelerator.org/browse/TC-2363
+        properties.text = L(properties.textid);
+        delete properties.textid;
+    }
+
+    var labelProperties;
+
+    if (OS_ANDROID || OS_BLACKBERRY) {
+        var wrapperProperties = _.omit(properties, props);
+        labelProperties = _.pick(properties, props);
+        var shadowProperties = _.omit(labelProperties, 'color', 'autoLink');
+
+        if (properties.shadowColor) {
+            var shadowOffset = _.defaults(properties.shadowOffset || {}, {
+                x: 0,
+                y: -1
+            });
+
+            shadowProperties.top = shadowOffset.y;
+            shadowProperties.left = shadowOffset.x;
+            shadowProperties.color = properties.shadowColor;
+
+        } else {
+            shadowProperties.visible = false;
+        }
+
+        $.wrapper.applyProperties(wrapperProperties);
+        $.shadow.applyProperties(shadowProperties);
+
+    } else {
+        labelProperties = properties;
+    }
+
+    $.label.applyProperties(labelProperties);
+
+    return;
 }
+
+if (OS_ANDROID || OS_BLACKBERRY) {
+
+    exports.setText = function(text) {
+        $.shadow.text = text;
+        $.label.text = text;
+    };
+
+    exports.animate = function(_args, _callback) {
+        $.shadow.animate(_args);
+        $.label.animate(_args, _callback);
+    };
+
+} else {
+    exports.setText = $.label.setText;
+    exports.animate = $.label.animate;
+}
+
+exports.applyProperties = applyProperties;
+exports.getText = $.label.getText;
 
 Object.defineProperty($, "text", {
     get: exports.getText,
@@ -77,8 +70,6 @@ Object.defineProperty($, "text", {
 });
 
 Object.defineProperty($, "color", {
-    get: OS_ANDROID ? $.inner.getColor : $.outer.getColor,
-    set: OS_ANDROID ? $.inner.setColor : $.outer.setColor
+    get: $.label.getColor,
+    set: $.label.setColor
 });
-
-exports.applyProperties(args);

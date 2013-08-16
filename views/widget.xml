@@ -1,3 +1,7 @@
 <Alloy>
-	<Label id="outer"><Label id="inner" platform="android,mobileweb" /></Label>
+	<View id="wrapper" platform="android,blackberry">
+        <Label id="shadow" />
+        <Label id="label" />
+    </View>
+    <Label id="label" platform="ios,mobileweb" />
 </Alloy>
