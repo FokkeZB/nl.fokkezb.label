@@ -32,7 +32,7 @@ The widget provides a replacement for `<Label />` to support text shadows on And
     ```xml
     <Alloy>
         <Window>
-        	<Label shadowColor="#000" />
+        	<Widget src="nl.fokkezb.label" shadowColor="#000" />
         </Window>
     </Alloy>
     ```
