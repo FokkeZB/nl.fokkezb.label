@@ -8,11 +8,11 @@ The widget provides a replacement for `<Label />` to support text shadows on And
 * Unzip the folder to your project under `app/widgets/nl.fokkezb.label`.
 * Add the widget as a dependency to your `app/config.json` file:
 
-```javascript
-"dependencies": {
-	"nl.fokkezb.label":"1.0"
-}
-```
+    ```javascript
+    "dependencies": {
+    	"nl.fokkezb.label":"1.0"
+    }
+    ```
 
 * Use the widget like you would use a normal `<Label />`.
 
