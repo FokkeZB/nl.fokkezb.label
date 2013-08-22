@@ -18,6 +18,11 @@ function applyProperties(properties) {
         labelProperties = _.pick(properties, props);
         var shadowProperties = _.omit(labelProperties, 'color', 'autoLink');
 
+        // Normally, if left+right is given, we want the view to fill
+        if (properties.left && properties.right && !properties.width) {
+            wrapperProperties.width = Ti.UI.FILL;
+        }
+
         if (properties.shadowColor) {
             var shadowOffset = _.defaults(properties.shadowOffset || {}, {
                 x: 0,
