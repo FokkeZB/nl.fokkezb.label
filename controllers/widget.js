@@ -1,5 +1,5 @@
 var args = arguments[0] || {},
-    props = ['font', 'text', 'ellipsize', 'html', 'textAlign', 'verticalAlign', 'textId', 'wordWrap', 'color', 'autoLink'];
+    props = ['font', 'text', 'ellipsize', 'html', 'textAlign', 'verticalAlign', 'textId', 'wordWrap', 'color', 'autoLink', 'touchEnabled'];
 
 applyProperties(args);
 
@@ -14,7 +14,7 @@ function applyProperties(properties) {
     var labelProperties;
 
     if (OS_ANDROID || OS_BLACKBERRY) {
-        var wrapperProperties = _.omit(properties, props);
+        var wrapperProperties = _.omit(properties, _.omit(props, 'touchEnabled'));
         labelProperties = _.pick(properties, props);
         var shadowProperties = _.omit(labelProperties, 'color', 'autoLink');
 
@@ -70,6 +70,10 @@ Object.defineProperty($, "text", {
 });
 
 Object.defineProperty($, "color", {
-    get: $.label.getColor,
-    set: $.label.setColor
+    get: function () {
+        return $.label.color;
+    },
+    set: function (color) {
+        $.label.setColor(color);
+    }
 });

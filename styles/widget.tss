@@ -1,4 +1,12 @@
-"#wrapper": {
+"View": {
     width: Ti.UI.SIZE,
     height: Ti.UI.SIZE
+}
+
+"#center": {
+    touchEnabled: false
+}
+
+"Label[platform=android]": {
+    touchEnabled: false
 }

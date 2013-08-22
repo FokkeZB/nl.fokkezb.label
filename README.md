@@ -10,7 +10,7 @@ The widget provides a replacement for `<Label />` to support text shadows on And
 
     ```javascript
     "dependencies": {
-    	"nl.fokkezb.label":"1.0"
+    	"nl.fokkezb.label":"1.0.1"
     }
     ```
 
@@ -49,6 +49,10 @@ The widget provides a replacement for `<Label />` to support text shadows on And
 * `animate()`: Animate the `Label` ( or `View`)
 
 ## Changelog
+* 1.1:
+    * Fix for non autosizing labels
+    * Fix for callbacks on Android
+    * Handling `touchEnabled`
 * 1.0: Initial version
 
 ## License

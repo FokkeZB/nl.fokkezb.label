@@ -1,7 +1,9 @@
 <Alloy>
 	<View id="wrapper" platform="android,blackberry">
-        <Label id="shadow" />
-        <Label id="label" />
+        <View id="center">
+            <Label id="shadow" />
+            <Label id="label" />
+        </View>
     </View>
     <Label id="label" platform="ios,mobileweb" />
 </Alloy>
