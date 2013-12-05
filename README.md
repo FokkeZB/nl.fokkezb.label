@@ -1,4 +1,4 @@
-***NOTE:** As from Titanium 3.2.0, text shadows will be support for Android, making this widget of little use unless you need to support BlackBerry. I will not maintain this module any further.*
+**NOTE:** As from Titanium 3.2.0, text shadows will be support for Android, making this widget of little use unless you need to support BlackBerry. I will not maintain this module any further.
 
 ---------------------
 
