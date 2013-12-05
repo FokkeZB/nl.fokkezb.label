@@ -1,3 +1,7 @@
+***NOTE:** As from Titanium 3.2.0, text shadows will be support for Android, making this widget of little use unless you need to support BlackBerry. I will not maintain this module any further.*
+
+---------------------
+
 # Alloy (Shadow) Label Widget
 This is a widget for the [Alloy](http://projects.appcelerator.com/alloy/docs/Alloy-bootstrap/index.html) MVC framework of [Appcelerator](http://www.appcelerator.com)'s [Titanium](http://www.appcelerator.com/platform) platform.
 
@@ -10,7 +14,7 @@ The widget provides a replacement for `<Label />` to support text shadows on And
 
     ```javascript
     "dependencies": {
-    	"nl.fokkezb.label":"1.0.1"
+    	"nl.fokkezb.label":"1.2"
     }
     ```
 
@@ -49,6 +53,7 @@ The widget provides a replacement for `<Label />` to support text shadows on And
 * `animate()`: Animate the `Label` ( or `View`)
 
 ## Changelog
+* 1.2: Filling width if `left` and `right` are given.
 * 1.1:
     * Fix for non autosizing labels
     * Fix for callbacks on Android
