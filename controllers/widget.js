@@ -21,6 +21,10 @@ function applyProperties(properties) {
         // Normally, if left+right is given, we want the view to fill
         if (properties.left && properties.right && !properties.width) {
             wrapperProperties.width = Ti.UI.FILL;
+
+            // We cannot but set these to fill as well or the shadow will not align
+            labelProperties.width = Ti.UI.FILL;
+            shadowProperties.width = Ti.UI.FILL;
         }
 
         if (properties.shadowColor) {
