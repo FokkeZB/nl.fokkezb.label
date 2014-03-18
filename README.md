@@ -1,26 +1,22 @@
-**NOTE:** As from Titanium 3.2.0, text shadows will be support for Android, making this widget of little use unless you need to support BlackBerry. I will not maintain this module any further.
+> **NOTE:** As from Titanium 3.2.0, text shadows will be support for Android, making this widget of little use unless you need to support BlackBerry. I will not maintain this module any further.
 
----------------------
-
-# Alloy (Shadow) Label Widget
+# Alloy (Shadow) Label Widget [![Titanium](http://www-static.appcelerator.com/badges/titanium-git-badge-sq.png)](http://www.appcelerator.com/titanium/) [![Alloy](http://www-static.appcelerator.com/badges/alloy-git-badge-sq.png)](http://www.appcelerator.com/alloy/)
 This is a widget for the [Alloy](http://projects.appcelerator.com/alloy/docs/Alloy-bootstrap/index.html) MVC framework of [Appcelerator](http://www.appcelerator.com)'s [Titanium](http://www.appcelerator.com/platform) platform.
 
 The widget provides a replacement for `<Label />` to support text shadows on Android & BlackBerry. on iOS and MobileWeb it will return a regular `Ti.UI.Label`. On Android & BlackBerry it will provide an auto-size `Ti.UI.View` wrapping two `Ti.UI.Label`'s. One for the text and another for it's shadow.
 
 ## Quick Start
-* [Download the latest version](https://github.com/FokkeZB/nl.fokkezb.label/releases) of the widget.
-* Unzip the folder to your project under `app/widgets/nl.fokkezb.label`.
-* Add the widget as a dependency to your `app/config.json` file:
 
-    ```javascript
-    "dependencies": {
-    	"nl.fokkezb.label":"1.2"
-    }
-    ```
+### Get it [![gitTio](http://gitt.io/badge.png)](http://gitt.io/component/nl.fokkezb.label)
+Download this repository and consult the [Alloy Documentation](http://docs.appcelerator.com/titanium/latest/#!/guide/Alloy_XML_Markup-section-35621528_AlloyXMLMarkup-ImportingWidgets) on how to install it, or simply use the [gitTio CLI](http://gitt.io/cli):
 
-* Use the widget like you would use a normal `<Label />`.
+`$ gittio install nl.fokkezb.label`
 
-    **Before:** *Only showing a shadow on iOS and MobileWeb*
+### Use it
+
+Use the widget like you would use a normal `<Label />`.
+
+**Before:** *Only showing a shadow on iOS and MobileWeb*
 
     ```xml
     <Alloy>
@@ -30,7 +26,7 @@ The widget provides a replacement for `<Label />` to support text shadows on And
     </Alloy>
     ```
     
-    **After:** *Showing a shadow on all platforms*
+**After:** *Showing a shadow on all platforms*
 
 
     ```xml
